@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet author="nkoldassov" id="create-scoreboard-table">
+        <sql endDelimiter=";;" splitStatements="true"> <![CDATA[
+       create table if not exists scoreboard
+       (
+           id          bigserial primary key,
+           code        varchar(100) unique,
+           inserted_at timestamp with time zone default current_timestamp
+       );;
+      ]]></sql>
+    </changeSet>
+
+    <changeSet author="nkoldassov" id="insert-into-scoreboard-table">
+        <sql endDelimiter=";;" splitStatements="true"> <![CDATA[
+       insert into scoreboard(code) values ('a0a0');;
+      ]]></sql>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,3 @@
+CREATE USER queue_user WITH ENCRYPTED PASSWORD 'SoxnWOnYbm6k5P452Uv5WL2v0b5ENj';
+CREATE DATABASE queue_db WITH OWNER queue_user;
+GRANT ALL ON DATABASE queue_db TO queue_user;

@@ -1,0 +1,29 @@
+version: '3.8'
+
+networks:
+  default:
+    name: api-queue-network
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+
+
+services:
+
+  pg:
+    container_name: db-queue
+    image: postgres:12
+    restart: always
+    mem_limit: 700M
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "40018:5432"
+    volumes:
+      - pg:/var/lib/postgresql/data
+      - ./pg-init/init.sql:/docker-entrypoint-initdb.d/create-users.sql
+
+volumes:
+  pg:
+    driver: local
